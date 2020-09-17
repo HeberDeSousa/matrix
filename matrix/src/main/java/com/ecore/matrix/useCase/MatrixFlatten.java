@@ -25,7 +25,14 @@ public class MatrixFlatten {
 	}
 
 	public String execute(Matrix matrix) {
-		return null;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < matrix.getMatrixCsv().length; i++) {
+			sb.append(matrix.getMatrixCsv()[i]);
+			if (i + i < matrix.getMatrixCsv().length) {
+				sb.append(",");
+			}
+		}
+		return sb.toString();
 	}
 
 }
