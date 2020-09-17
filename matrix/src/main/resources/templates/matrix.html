@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Java Word Count</title>
+</head>
+<body>
+	<form id="myForm" method="post">
+		<div>
+			<label for="text">Insert your text in the box below</label>
+		</div>
+		<div>
+			<textarea cols="50" rows="10" name="text" id="text" placeholder="Text goes here" required="required" oninvalid="this.setCustomValidity('Some text input is required')"
+    oninput="this.setCustomValidity('')" onkeyup="count();">[[${text}]]</textarea>
+		</div>
+		<div>
+			<input type="submit" value="Count Words!">
+		</div>
+		<div>
+			<span id="result" style="color: red;" th:text="${result}"></span>
+		</div>
+	</form>
+</body>
+<script>
+function count() {
+    // Creating the XMLHttpRequest object
+    var request = new XMLHttpRequest();
+    
+    // Instantiating the request object
+    request.open("POST", "/ajax");
+    
+    // Defining event listener for readystatechange event
+    request.onreadystatechange = function() {
+        // Check if the request is compete and was successful
+        if(this.readyState === 4 && this.status === 200) {
+            // Inserting the response from server into an HTML element
+            document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    
+    // Retrieving the form data
+    var myForm = document.getElementById("myForm");
+    var formData = new FormData(myForm);
+
+    // Sending the request to the server
+    request.send(formData);
+}
+</script>
+
+</html>
