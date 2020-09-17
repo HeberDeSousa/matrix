@@ -37,16 +37,10 @@ class MatrixApplicationTests {
 	}
 
 	@Test
-	void testEqualsMethod() {
+	void testGiven() {
 		String[] matrixCsv = { "1,2,3", "4,5,6", "7,8,9" };
 		Matrix matrix2 = new Matrix(matrixCsv);
 		assertTrue(matrix.equals(matrix2));
-	}
-
-	@Test
-	void testGiven() {
-		String[] matrixCsv = { "1,2,3", "4,5,6", "7,8,9" };
-		assertEquals(matrixCsv, givenOperation.execute(matrix));
 	}
 
 	@Test

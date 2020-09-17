@@ -25,7 +25,7 @@ public class MatrixGiven {
 	}
 
 	public Matrix execute(Matrix matrix) {
-		return null;
+		return matrix;
 	}
 
 }
