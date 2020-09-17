@@ -25,7 +25,14 @@ public class MatrixSum {
 	}
 
 	public Integer execute(Matrix matrix) {
-		return null;
+		Integer[][] intMatrix = matrix.toIntMatrix();
+		Integer sum = 0;
+		for (int i = 0; i < intMatrix.length; i++) {
+			for (int j = 0; j < intMatrix[i].length; j++) {
+				sum += intMatrix[i][j];
+			}
+		}
+		return sum;
 	}
 
 }
