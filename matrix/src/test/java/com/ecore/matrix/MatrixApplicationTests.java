@@ -43,4 +43,35 @@ class MatrixApplicationTests {
 		assertTrue(matrix.equals(matrix2));
 	}
 
+	@Test
+	void testGiven() {
+		String[] matrixCsv = { "1,2,3", "4,5,6", "7,8,9" };
+		assertEquals(matrixCsv, givenOperation.execute(matrix));
+	}
+
+	@Test
+	void testInvert() {
+		String[] invertedMatrixCsv = { "1,4,7", "2,5,8", "3,6,9" };
+		Matrix invertedMatrix = new Matrix(invertedMatrixCsv);
+		assertTrue(invertedMatrix.equals(invertOperation.execute(matrix)));
+	}
+
+	@Test
+	void testFlatten() {
+		String flattened = "1,2,3,4,5,6,7,8,9";
+		assertEquals(flattened, flattenOperation.execute(matrix));
+	}
+
+	@Test
+	void testSum() {
+		Integer sum = 45;
+		assertEquals(sum, sumOperation.execute(matrix));
+	}
+
+	@Test
+	void testMultiply() {
+		Integer multiplication = 362880;
+		assertEquals(multiplication, multiplyOperation.execute(matrix));
+	}
+
 }
