@@ -1,6 +1,8 @@
 package com.ecore.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +18,13 @@ import com.ecore.matrix.useCase.MatrixSum;
 class MatrixApplicationTests {
 
 	Matrix matrix = new Matrix();
+
 	MatrixGiven givenOperation = MatrixGiven.getInstance();
 	MatrixInvert invertOperation = MatrixInvert.getInstance();
 	MatrixFlatten flattenOperation = MatrixFlatten.getInstance();
 	MatrixSum sumOperation = MatrixSum.getInstance();
 	MatrixMultiply multiplyOperation = MatrixMultiply.getInstance();
-	
+
 	{
 		String[] matrixCsv = { "1,2,3", "4,5,6", "7,8,9" };
 		matrix.setMatrixCsv(matrixCsv);
@@ -31,6 +34,13 @@ class MatrixApplicationTests {
 	void convertCsvToIntMatrix() {
 		Integer[][] intMatrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 		assertArrayEquals(intMatrix, matrix.toIntMatrix());
+	}
+
+	@Test
+	void testEqualsMethod() {
+		String[] matrixCsv = { "1,2,3", "4,5,6", "7,8,9" };
+		Matrix matrix2 = new Matrix(matrixCsv);
+		assertTrue(matrix.equals(matrix2));
 	}
 
 }

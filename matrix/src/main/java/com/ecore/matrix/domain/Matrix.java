@@ -1,8 +1,12 @@
 package com.ecore.matrix.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class Matrix {
@@ -26,6 +30,22 @@ public class Matrix {
 			lineNumber++;
 		}
 		return intMatrix;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Matrix)) {
+			return false;
+		}
+		Matrix matrix = (Matrix) obj;
+		int i = 0;
+		for (String line : matrix.getMatrixCsv()) {
+			if (!this.getMatrixCsv()[i].equals(line)) {
+				return false;
+			}
+			i++;
+		}
+		return true;
 	}
 
 }
